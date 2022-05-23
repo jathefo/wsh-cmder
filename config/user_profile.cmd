@@ -25,6 +25,8 @@ if not exist %WORKSPACE% (
 if not exist "%CMDER_ROOT%\vendor\cygwin\home\%USERNAME%" (
         md %CMDER_ROOT%\vendor\cygwin\home\%USERNAME%
 )
+set "PATH=%CMDER_ROOT%\bin\busybox;%PATH%"
+set "PATH=%CMDER_ROOT%\bin\android;%PATH%"
 set "PATH=%CMDER_ROOT%\vendor\cygwin\usr\x86_64-pc-cygwin\bin;%PATH%"
 set "PATH=%CMDER_ROOT%\vendor\cygwin\usr\sbin;%PATH%"
 set "PATH=%CMDER_ROOT%\vendor\cygwin\sbin;%PATH%"

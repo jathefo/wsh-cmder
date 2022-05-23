@@ -12,3 +12,6 @@ clear=cls
 unalias=alias /d $1
 vi=vim $*
 cmderr=cd /d "%CMDER_ROOT%"
+
+cd=mycd.bat $*
+open=explorer.exe $*
