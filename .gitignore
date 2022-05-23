@@ -1,3 +1,5 @@
 
 config/clink.log
 config/clink_history*
+vendor/cygwin/
+wsh-installs/tmp/
