@@ -2,10 +2,11 @@
 
 :: *****************************
 :: Configure the User Environment for Cmder.exe
-::set cmder_path=%~dp0
-::set cmder_root=%cmder_path:~0,-1%
-::set str_cmp=ok-cmder
-::set end_flag=-xxxend
+set cmder_path=%~dp0
+set cmder_root=%cmder_path:~0,-1%
+set str_cmp=wsh-cmder
+set end_flag=-xxxend
+
 ::
 ::reg query HKCU\Environment\ /v path > a.txt
 ::
@@ -72,18 +73,23 @@ set INSTALL_DIR=%~dp0wsh-installs
 ::    http://mirrors.163.com/cygwin/
 
 :: Install gcc compiler
-%INSTALL_DIR%\setup-x86_64.exe -q -B -d -n -N -W -s http://mirrors.aliyun.com/cygwin/ --root %~dp0vendor\cygwin -l %INSTALL_DIR%\tmp ^
+%INSTALL_DIR%\setup-x86_64.exe -q -n -W -s http://mirrors.aliyun.com/cygwin/ --root %~dp0vendor\cygwin -l %INSTALL_DIR%\tmp ^
+-P gcc-core -P gcc-g++ -P make -p gdb -P binutils ^
+-P cmake ^
 -P vim ^
 -P git ^
+-P cscope ^
+-P ctags ^
 -P python -P python3 ^
+-P inetutils ^
 -P curl ^
 -P patch
 
 :: rd /s /q %INSTALL_DIR%\tmp
 
-:: copy %CMDER_ROOT%\config\vimrc.orig %CMDER_ROOT%\vendor\cygwin\etc\vimrc
-:: copy %CMDER_ROOT%\config\taglist_46\plugin\taglist.vim %CMDER_ROOT%\vendor\cygwin\usr\share\vim\vim82\plugin\taglist.vim
-:: copy %CMDER_ROOT%\config\taglist_46\doc\taglist.txt %CMDER_ROOT%\vendor\cygwin\usr\share\vim\vim82\doc\taglist.txt
+copy %cmder_root%\config\vimrc.orig %cmder_root%\vendor\cygwin\etc\vimrc
+copy %cmder_root%\config\vim-plugins\taglist_46\plugin\taglist.vim %cmder_root%\vendor\cygwin\usr\share\vim\vim82\plugin\taglist.vim
+copy %cmder_root%\config\vim-plugins\taglist_46\doc\taglist.txt %cmder_root%\vendor\cygwin\usr\share\vim\vim82\doc\taglist.txt
 
 echo "Success to install..."
 
