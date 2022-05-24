@@ -80,10 +80,12 @@ set INSTALL_DIR=%~dp0wsh-installs
 -P git ^
 -P cscope ^
 -P ctags ^
--P python -P python3 ^
+-P python ^
+-P python3 -P python3-devel ^
 -P inetutils ^
 -P curl ^
 -P patch
+:: -P clang -P libclang-devel -P libllvm-devel ^
 
 :: rd /s /q %INSTALL_DIR%\tmp
 
