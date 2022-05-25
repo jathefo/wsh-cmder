@@ -132,7 +132,7 @@ if has("cscope")
 endif
 
 " cscope command configuration
-:let mapleader='.'
+:let mapleader=','
 " :nmap <leader>sa:cs add cscope.out<cr>
 :nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 :nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -143,6 +143,16 @@ endif
 :nmap <leader>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
 :nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 " ******************* cscope configuration end **********************
+
+" ********************** vim clang format begin *********************
+" configurations of clang format
+let g:clang_format#command = 'clang-format'
+let g:clang_format#detect_style_file = 1
+
+" map
+:cmap CF ClangFormat
+:vmap CF :ClangFormat<CR>
+" ********************** vim clang format end ***********************
 
 " ***************** show status line begin ****************
 set laststatus=2      " always show status line
@@ -259,14 +269,26 @@ set nowrap
 " ******************* Custom Settings Begin *************************
 
 :inoremap [ []<Esc>i
+:inoremap ] <C-R>=Optclose(']')<CR>
 :inoremap { {}<Esc>i
+:inoremap } <C-R>=Optclose('}')<CR>
 :inoremap ( ()<Esc>i
-:inoremap < <><Esc>i
-:inoremap " ""<Esc>i
-:inoremap ' ''<Esc>i
+:inoremap ) <C-R>=Optclose(')')<CR>
+" :inoremap < <><Esc>i
+" :inoremap > <C-R>=Optclose('>')<CR>
+" :inoremap " ""<Esc>i
+" :inoremap ' ''<Esc>i
 
-:nnoremap < :resize -3<CR>
-:nnoremap > :resize +3<CR>
+function! Optclose(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endfunction
+
+:nnoremap v- :resize -3<CR>
+:nnoremap v= :resize +3<CR>
 :nnoremap w= :vertical resize +20<CR>
 :nnoremap w- :vertical resize -20<CR>
 
@@ -275,10 +297,14 @@ set nowrap
 :nnoremap <C-K> <C-W><C-K>
 :nnoremap <C-L> <C-W><C-L>
 :nnoremap <C-H> <C-W><C-H>
+:nnoremap <S-L> <C-W><C-T>
+:nnoremap <S-R> <C-W><C-B>
+:nnoremap <S-P> <C-W><C-P>
 
-:vmap <C-c> "+y
-:nmap <C-p> "+p
-:map <C-a> <Esc>ggVG
+" :vmap <C-c> "+y
+" :nmap <C-p> "+p
+" :map <C-a> <Esc>ggVG
+" :nmap sv :source ~/.vimrc
 
 " set match colors
 :hi blue ctermfg=0 ctermbg=6 guifg=Black guibg=#8CCBEA
@@ -286,10 +312,10 @@ set nowrap
 :hi red ctermfg=0 ctermbg=1 guifg=Black guibg=#FF7272
 :hi pink ctermfg=0 ctermbg=5 guifg=Black guibg=#FFB3FF
 
-:nmap mb :mat blue /<C-R><C-W>/<CR>
-:nmap mg :2mat green /<C-R><C-W>/<CR>
-:nmap mr :3mat red /<C-R><C-W>/<CR>
-:nmap cb :mat<CR>
-:nmap cg :2mat<CR>
-:nmap cr :3mat<CR>
+:nmap >b :mat blue /<C-R><C-W>/<CR>
+:nmap >g :2mat green /<C-R><C-W>/<CR>
+:nmap >r :3mat red /<C-R><C-W>/<CR>
+:nmap <b :mat<CR>
+:nmap <g :2mat<CR>
+:nmap <r :3mat<CR>
 " ******************* Custom Settings End ***************************
