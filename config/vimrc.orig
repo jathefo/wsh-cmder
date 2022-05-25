@@ -31,9 +31,9 @@ Plugin 'VundleVim/Vundle.vim'
 "  " Plugin 'ascenator/L9', {'name': 'newL9'}
 
 Plugin 'preservim/nerdtree'
+" Plugin 'ycm-core/YouCompleteMe'
 " Plugin 'jathefo/taglist.vim'
 " Plugin 'jathefo/cscope.vim'
-" Plugin 'Valloric/YouCompleteMe'
 " Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
 
@@ -54,10 +54,20 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " ********************** vim bundle(vundle) end *********************
 
-" ******************** tagbar configuration begin ******************
-nmap  <F9> :NERDTreeToggle<cr>
+" ******************** YouCompleteMe configuration begin ******************
+" let g:ycm_server_python_interpreter='/usr/bin/python3.9'
+" let g:ycm_global_ycm_extra_conf='$HOME/.vim/.ycm_extra_conf.py'
+" ******************** YouCompleteMe configuration end ******************
 
-" ******************** tagbar configuration end ******************
+" ******************** NERDTree configuration begin ******************
+nmap <silent> <F9> :NERDTreeToggle<cr>
+
+" autocmd VimEnter * NERDTree
+let NERDTreeQuitOnOpen = 3
+let NERDTreeWinPos = 'right'
+let NERDTreeWinSize = 50
+" let NERDTreeShowBookmarks = 1
+" ******************** NERDTree configuration end ******************
 
 " ******************** taglist configuration begin ******************
 " Configurations for taglist plugin. So you should install taglist plugin firstly.
@@ -84,7 +94,7 @@ let Tlist_Process_File_Always = 1
 let Tlist_Show_One_File = 1
 " Tlist_Sort_Type'               	Sort method used for arranging the tags.
 " let Tlist_Use_Horiz_Window = 1
-let Tlist_Use_Right_Window = 1
+let Tlist_Use_Right_Window = 0
 " Tlist_Use_SingleClick'         	Single click on a tag jumps to it.
 " let Tlist_WinHeight = 25
 let Tlist_WinWidth = 30
