@@ -166,7 +166,10 @@ local function set_prompt_filter()
     if uah ~= '' then uah = get_uah_color() .. uah end
     if cwd ~= '' then cwd = get_cwd_color() .. cwd end
 
-    local version_control = prompt_includeVersionControl and "{git}{hg}{svn}" or ""
+    -- mznight jathefo@126.com, 2022/05/25, Modify control show in prompt.
+    -- local version_control = prompt_includeVersionControl and "{git}{hg}{svn}" or ""
+    local version_control = ""
+    -- End
 
     prompt = "{uah}{cwd}" .. version_control .. get_lamb_color() .. cr .. "{env}{lamb} \x1b[0m"
     prompt = string.gsub(prompt, "{uah}", uah)
@@ -586,10 +589,12 @@ end
 
 -- insert the set_prompt at the very beginning so that it runs first
 clink.prompt.register_filter(set_prompt_filter, 1)
-clink.prompt.register_filter(hg_prompt_filter, 50)
-clink.prompt.register_filter(git_prompt_filter, 50)
-clink.prompt.register_filter(svn_prompt_filter, 50)
-clink.prompt.register_filter(percent_prompt_filter, 51)
+-- mznight jathefo@126.com, 2022/05/25, Modify these filters when to execute commonds in Cmder.
+-- clink.prompt.register_filter(hg_prompt_filter, 50)
+-- clink.prompt.register_filter(git_prompt_filter, 50)
+-- clink.prompt.register_filter(svn_prompt_filter, 50)
+-- clink.prompt.register_filter(percent_prompt_filter, 51)
+-- End
 
 local completions_dir = clink.get_env('CMDER_ROOT')..'/vendor/clink-completions/'
 -- Execute '.init.lua' first to ensure package.path is set properly
