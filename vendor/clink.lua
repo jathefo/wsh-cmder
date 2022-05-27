@@ -175,7 +175,10 @@ local function set_prompt_filter()
     prompt = string.gsub(prompt, "{uah}", uah)
     prompt = string.gsub(prompt, "{cwd}", cwd)
     prompt = string.gsub(prompt, "{env}", env)
-    clink.prompt.value = string.gsub(prompt, "{lamb}", prompt_lambSymbol)
+    -- mznight jathefo@126.com, 2022/05/26, Modify prompt to "$".
+    -- clink.prompt.value = string.gsub(prompt, "{lamb}", prompt_lambSymbol)
+    clink.prompt.value = string.gsub(prompt, "{lamb}", "$")
+    -- End
 end
 
 local function percent_prompt_filter()
