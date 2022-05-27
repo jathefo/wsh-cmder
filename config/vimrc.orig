@@ -150,7 +150,7 @@ let g:clang_format#command = 'clang-format'
 let g:clang_format#detect_style_file = 1
 
 " map
-:cmap CF ClangFormat
+" :cmap CF ClangFormat
 :vmap CF :ClangFormat<CR>
 " ********************** vim clang format end ***********************
 
@@ -209,11 +209,12 @@ endif " has("autocmd")
 " ***************** remember last pos end ****************
 
 " ******************* vi system config begin ************************
-set nocompatible
-
+" :colorscheme desert
+set t_Co=256
 syntax on
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=DarkBlue ctermfg=white guibg=NONE guifg=NONE
+highlight cursorline cterm=none ctermbg=239
+" highlight CursorLine cterm=NONE ctermbg=DarkBlue ctermfg=white guibg=NONE guifg=NONE
 " set cursorcolumn
 " highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 set hlsearch
@@ -267,6 +268,7 @@ set nowrap
 " ******************* vi system config end **************************
 
 " ******************* Custom Settings Begin *************************
+:nmap <C-B> <C-V>
 
 :inoremap [ []<Esc>i
 :inoremap ] <C-R>=Optclose(']')<CR>
