@@ -73,7 +73,7 @@ set INSTALL_DIR=%~dp0wsh-installs
 ::    http://mirrors.163.com/cygwin/
 
 :: Install gcc compiler
-%INSTALL_DIR%\setup-x86_64.exe -q -n -W -s http://mirrors.aliyun.com/cygwin/ --root %~dp0vendor\cygwin -l %INSTALL_DIR%\tmp ^
+%INSTALL_DIR%\setup-x86_64.exe -q -n -g -W -s http://mirrors.aliyun.com/cygwin/ --root %~dp0vendor\cygwin -l %INSTALL_DIR%\tmp ^
 -P gcc-core -P gcc-g++ -P make -p gdb -P binutils ^
 -P cmake ^
 -P vim ^
