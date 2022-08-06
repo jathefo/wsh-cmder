@@ -3,5 +3,3 @@ config/clink.log
 config/clink_history*
 vendor/cygwin/
 wsh-installs/tmp/
-config/user-ConEmu.xml
-vendor/conemu-maximus5/ConEmu.xml
